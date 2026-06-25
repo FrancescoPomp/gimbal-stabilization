@@ -4,9 +4,6 @@ import matplotlib.pyplot as plt
 ImuData = pd.read_csv("csv.csv")
 ImuData.timestamp_ms = ImuData.timestamp_ms - ImuData.timestamp_ms[0]
 
-print(ImuData.head(5))
-print(ImuData.describe())
-
 #Plot Gyro data
 plt.figure()
 plt.xlabel("Timestamp (ms)")
