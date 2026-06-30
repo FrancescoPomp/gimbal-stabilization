@@ -16,7 +16,7 @@ ser = serial.Serial('COM3', 115200, timeout=1)
 #openign text file
 with open(fileName + ".csv","w", newline = '') as file:
     #writing header to the file for graphing reasons
-    file.write("timestamp_ms,gyrox_deg,gyroy_deg,gyroz_deg,accelx_deg,accely_deg,compfilterx_deg,compfiltery_deg\n")
+    file.write("timestamp_ms,gyrox_deg,gyroy_deg,gyroz_deg,accelx_deg,accely_deg,compfilterx_deg,compfiltery_deg,kalmanx_deg,kalmany_deg\n")
     #decoding and writing everything that comes into the serial port until program is stopped
     while True:
         file.write(ser.readline().decode('utf-8'))

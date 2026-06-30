@@ -16,6 +16,7 @@ plt.title("Resting Gyroscope Analysis")
 plt.savefig("gyro_noise_floor.png")
 plt.show()
 
+
 #plotting accel data
 plt.figure()
 plt.xlabel("Timestamp (ms)")
@@ -62,3 +63,13 @@ plt.legend()
 plt.title("Resting Gyroscope Angle Drift")
 plt.savefig("gyro_drift.png")
 plt.show()
+
+StaticHold = pd.read_csv("StaticHold.csv")
+print("Variance Accel Angle X (R_x) = " + str(StaticHold.accelx_deg.std() ** 2))
+print("Variance Accel Angle Y (R_y) = " + str(StaticHold.accely_deg.std() ** 2))
+dt = ImuData.timestamp_ms.diff() / 1000  # convert ms to seconds
+angle_increments_x = ImuData.gyrox_dps * dt
+angle_increments_y = ImuData.gyroy_dps * dt
+print("Q_angle X = " + str(angle_increments_x.var()))
+print("Q_angle Y = " + str(angle_increments_y.var()))
+print(StaticHold[['accelx_deg', 'accely_deg']].describe())
